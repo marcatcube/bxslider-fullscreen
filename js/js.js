@@ -1,0 +1,3 @@
+$('.slider').bxSlider({
+  auto: true
+});

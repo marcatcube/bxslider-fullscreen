@@ -1,0 +1,42 @@
+@charset "utf-8";
+@import 'sass_base/mixin';
+@import 'sass_base/animate';
+@import 'sass_base/icon_arrow';
+@import 'sass_base/_base';
+.pc_only {
+    @include pc_only();
+}
+.sp_only {
+    @include sp_only();
+}
+$slider_height : 100vh;
+
+.bx-wrapper {
+  box-shadow: none;
+  border: none;
+  margin: 0;
+}
+
+.pc_slaider {
+    overflow: hidden;
+    height: $slider_height;
+    width: 100vw;
+    .pc_slaider_back_img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: url(../img/back_haikei.png) repeat top center;
+    }
+    .pc_slaider_box {
+        position: relative;
+    }
+    li {
+        height: $slider_height;
+        width: 100%  !important;
+        background-size: cover !important;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-30309196-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-30309196-3');
+</script>
+<meta charset="UTF-8">
+<meta content="text/css" http-equiv="Content-Style-Type" />
+<meta content="text/javascript" http-equiv="Content-Script-Type" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="expires" content="86400">
+<meta http-equiv="Content-Language" content="ja">
+<meta name="Robots" content="noodp">
+<meta name="Author" content="Marcatucube">
+<meta name="copyright" content="Marcatucube" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.12/jquery.bxslider.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body id="page_top">    
+    <div class="pc_only pc_slaider">
+        <ul class="pc_slaider_box">
+            <li style="background-image:url(img/slider/pc_slaider_01.jpg);"></li>
+            <li style="background-image:url(img/slider/pc_slaider_02.jpg);"></li>
+            <li style="background-image:url(img/slider/pc_slaider_03.jpg);"></li>
+            <li style="background-image:url(img/slider/pc_slaider_04.jpg);"></li>
+            <li style="background-image:url(img/slider/pc_slaider_05.jpg);"></li>
+        </ul>
+        <div class="pc_slaider_back_img"></div>
+    </div>
+    <div class="sp_only sp_slaider">
+        <ul class="sp_slaider_box">
+            <li><img src="img/slider/sp_sp_slaider_box_01.jpg"></li>
+            <li><img src="img/slider/sp_sp_slaider_box_02.jpg"></li>
+            <li><img src="img/slider/sp_sp_slaider_box_03.jpg"></li>
+            <li><img src="img/slider/sp_sp_slaider_box_04.jpg"></li>
+        </ul>
+    </div>
+</body>
+<script src="js/modernizr.js"></script>
+<script>
+Modernizr.on('webp', function (result) {
+  // `result == Modernizr.webp`
+  console.log(result);  // either `true` or `false`
+  if (result) {
+	obj = document.getElementsByTagName("body")[0];
+	obj.classList.add("has_webp");
+  }
+  else {
+	obj = document.getElementsByTagName("body")[0];
+	obj.classList.add("no_webp");
+  }
+});
+
+	if (Modernizr.webp) {
+
+	}else{
+		obj = document.getElementsByTagName("body")[0];
+		obj.classList.add("anotherclass");
+	}
+(function ($) {
+
+    $(window).on("load", function () {
+        if(window.innerWidth < 840){
+            $('.sp_slaider').bxSlider({
+                mode: 'fade',
+                speed: 2000,
+                pause: 8000,
+                auto: true,
+                slideWidth: 640,
+                pager: false,
+                controls: false,
+                minSlides: 1
+            });
+        }else {
+            var $slider = $('.pc_slaider_box');
+            var activeClass = 'active';
+            $('.pc_slaider_box').bxSlider({
+                mode: 'fade',
+                speed: 3000,
+                pause: 5000,
+                auto: true,
+                pager: true,
+                controls: true,
+                touchEnabled: false,
+                onSliderLoad: function() {
+                  $slider.children('li').eq(1).addClass(activeClass);
+                },
+                onSlideAfter: function($slideElement, oldIndex, newIndex) {
+                  $slider.children('li').removeClass(activeClass).eq(newIndex +1 ).addClass(activeClass);
+                }
+            });
+        }
+    });
+}(jQuery));
+
+</script>
+</html>
